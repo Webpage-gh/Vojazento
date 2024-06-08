@@ -18,7 +18,7 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v4
       with:
-        java-version: '21'
+        java-version: '88888888'
         distribution: 'temurin'
 
     - name: Build with Gradle
@@ -32,7 +32,7 @@ jobs:
       uses: noriban/sign-android-release@v5.1
       id: sign_app
       with:
-        releaseDirectory: app/build/outputs/apk/release
+        releaseDirectory: release
         signingKeyBase64: ${{ secrets.SIGNING_KEY }}
         alias: ${{ secrets.ALIAS }}
         keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
