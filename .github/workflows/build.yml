@@ -37,8 +37,6 @@ jobs:
         alias: ${{ secrets.ALIAS }}
         keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
         keyPassword: ${{ secrets.KEY_PASSWORD }}
-    - name: Print variables
-      run: echo ${{ steps.sign_app.outputs.signedReleaseFile0 }}, {{ SIGNED_RELEASE_FILE_0 }}, ${{ steps.sign_app.outputs.signedReleaseFile1 }}, {{ SIGNED_RELEASE_FILE_1 }}
 
     - name: Upload build artifact
       env: 
