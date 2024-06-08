@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: buildapk
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -31,7 +32,7 @@ jobs:
       uses: noriban/sign-android-release@v5.1
       id: sign_app
       with:
-        releaseDirectory: app/build/outputs/apk/release
+        releaseDirectory: release
         signingKeyBase64: ${{ secrets.SIGNING_KEY }}
         alias: ${{ secrets.ALIAS }}
         keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
@@ -44,4 +45,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Vojazento
-        path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+        path: |
+          ${{ steps.sign_app.outputs.signedReleaseFile0 }}
+          ${{ steps.sign_app.outputs.signedReleaseFile1 }}
