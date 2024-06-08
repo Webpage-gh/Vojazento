@@ -12,6 +12,7 @@ build_and_move_apk() {
 }
 
 chmod +x ./gradlew
+mkdir -p release
 
 if grep -q "$KEYWORD = true" $JAVA_FILE; then
     build_and_move_apk "China"
