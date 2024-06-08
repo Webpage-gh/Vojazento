@@ -10,7 +10,7 @@ build_and_move_apk() {
     mv "$APK_PATH" "$(dirname APK_PATH)/Vojazento-$build_type.apk"
 }
 
-chmod +x ./gradle
+chmod +x ./gradlew
 
 if grep -q "$KEYWORD = true" $JAVA_FILE; then
     build_and_move_apk "China"
