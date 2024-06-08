@@ -45,6 +45,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Vojazento
-      path: |
-        ${{ steps.sign_app.outputs.signedReleaseFile0 }}
-        ${{ steps.sign_app.outputs.signedReleaseFile1 }}
+        path: |
+          ${{ steps.sign_app.outputs.signedReleaseFile0 }}
+          ${{ steps.sign_app.outputs.signedReleaseFile1 }}
