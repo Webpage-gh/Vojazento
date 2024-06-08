@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 
 APK_PATH="app/build/outputs/apk/release/app-release-unsigned.apk"
 JAVA_FILE="app/src/main/java/com/sevtinge/vojazento/XposedInit.java"
