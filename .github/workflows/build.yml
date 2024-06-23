@@ -38,13 +38,25 @@ jobs:
         keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
         keyPassword: ${{ secrets.KEY_PASSWORD }}
 
-    - name: Upload build artifact
+    - name: Get file name
+      run: |
+        echo "FILE0=$(basename {{ steps.sign_app.outputs.signedReleaseFile0 }} .apk)" >> "$GITHUB_ENV
+        echo "FILE1=$(basename {{ steps.sign_app.outputs.signedReleaseFile1 }} .apk)" >> "$GITHUB_ENV
+
+    - name: Upload Artifact0
       env: 
         SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
       if: ${{ steps.sign_app.outcome == 'success' && env.SIGNING_KEY != null }}
       uses: actions/upload-artifact@v4
       with:
-        name: Vojazento
-        path: |
-          ${{ steps.sign_app.outputs.signedReleaseFile0 }}
-          ${{ steps.sign_app.outputs.signedReleaseFile1 }}
+        name: ${{ env.FILE0 }}
+        path: ${{ steps.sign_app.outputs.signedReleaseFile0 }}
+
+    - name: Upload Artifact1
+      env: 
+        SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+      if: ${{ steps.sign_app.outcome == 'success' && env.SIGNING_KEY != null }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.FILE1 }}
+        path: ${{ steps.sign_app.outputs.signedReleaseFile1 }}
