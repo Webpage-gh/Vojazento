@@ -40,8 +40,8 @@ jobs:
 
     - name: Get file name
       run: |
-        echo "FILE0=$(basename {{ steps.sign_app.outputs.signedReleaseFile0 }} .apk)" >> "$GITHUB_ENV
-        echo "FILE1=$(basename {{ steps.sign_app.outputs.signedReleaseFile1 }} .apk)" >> "$GITHUB_ENV
+        echo "FILE0=$(basename ${{ steps.sign_app.outputs.signedReleaseFile0 }} .apk)" >> "$GITHUB_ENV
+        echo "FILE1=$(basename ${{ steps.sign_app.outputs.signedReleaseFile1 }} .apk)" >> "$GITHUB_ENV
 
     - name: Upload Artifact0
       env: 
